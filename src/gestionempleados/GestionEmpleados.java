@@ -4,6 +4,8 @@
  */
 package gestionempleados;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author gaat1
@@ -14,7 +16,10 @@ public class GestionEmpleados {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SwingUtilities.invokeLater(()->{
+            MenuPrincipal Inicio = new MenuPrincipal();
+           Inicio.setVisible(true);
+        });
     }
     
 }
