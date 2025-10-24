@@ -82,7 +82,7 @@ public class Empleado {
     }
     
     public String toString() {
-        return "Coidgo: "+codigo+
+        return "Codigo: "+codigo+
                 "\nNombre: "+nombre+
                 "\nFecha de contratación: "+fechaContrato.getTime()+
                 (rutaFoto != null ? ("\nFoto " + rutaFoto) : " ");
