@@ -71,24 +71,47 @@ public class Empresa {
                 empfecha.getFechaFinContrato(newfecha);
                 return true;
             }
-             JOptionPane.showMessageDialog(null, "Error El usuario coodigo: " + codigo + " No Es Temporal ", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
+            JOptionPane.showMessageDialog(null, "Error El usuario coodigo: " + codigo + " No Es Temporal ", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         JOptionPane.showMessageDialog(null, "Error El usuario coodigo: " + codigo + " No Existe", "Error", JOptionPane.ERROR_MESSAGE);
         return false;
     }
 
     public double pagoMensual(int codigo) {
-        Empleado emp=buscarEmpleados(codigo);        
+        Empleado emp = buscarEmpleados(codigo);
         if (emp != null) {
-            return emp.calcularSalarioProporcional(); 
+            return emp.calcularSalarioProporcional();
         }
-       JOptionPane.showMessageDialog(null, "Error El usuario coodigo: " + codigo + " No Existe", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Error El usuario coodigo: " + codigo + " No Existe", "Error", JOptionPane.ERROR_MESSAGE);
         return 0.0;
     }
 
     public void reporteEmpleados() {
-        
+        StringBuilder reporte = new StringBuilder("--- REPORTE DE EMPLEADOS ---\n\n");
+        int mesActual = 9;
+        double total = 0.0;
+
+        if (Empleado.isEmpty()) {
+            reporte.append("No hay empleados registrados en la empresa.");
+        } else {
+            for (Empleado emp : this.Empleado) {
+                reporte.append("---------------------------------\n");
+
+                if (emp instanceof EmpleadoVentas) {
+                    EmpleadoVentas empV = (EmpleadoVentas) emp;
+                    reporte.append(empV.toString(mesActual, total));
+                } else if (emp instanceof EmpleadoTemporal) {
+                    EmpleadoTemporal empTemp = (EmpleadoTemporal) emp;
+                    reporte.append(empTemp.toString());
+                } else {
+                    reporte.append(emp.toString());
+                }
+                reporte.append("\n");
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, reporte.toString(), "Reporte de Empleados", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
