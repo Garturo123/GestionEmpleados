@@ -50,20 +50,32 @@ public class MenuPrincipal extends JFrame{
         registrarEmpleado.addActionListener(e ->{ 
             
             
-                });
+        });
+        
+        
         registrarHoras.addActionListener(e -> {
             
         });
+        
+        
         registrarVentas.addActionListener(e -> {
+       
         });
+        
+        
         actualizarContrato.addActionListener(e ->{ 
-            
-            
-                });
+               
+        });
+        
+        
         calcularPago.addActionListener(e -> {
             
         });
+        
+        
         reporteGeneral.addActionListener(e -> {
+        
         });
+        
     }
 }
