@@ -5,8 +5,6 @@
 package gestionempleados;
 
 import java.util.Calendar;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 /**
  *
  * @author najma
@@ -14,29 +12,39 @@ import java.util.Date;
 public class EmpleadoTemporal extends Empleado {
     
     // atributos adicionales
-    protected Calendar fechaActual;
     protected Calendar fechaFinContrato;
     
     // Constructor
-    public EmpleadoTemporal() {
-        super();
-        fechaActual = Calendar.getInstance();
-        fechaFinContrato.set(2026, Calendar.FEBRUARY, 11);
+    public EmpleadoTemporal(int codigo, String nombre, double salarioBase, int horasTrabajadas, 
+            int anioFin, int mesFin, int diaFin) {
+        super(codigo, nombre, salarioBase, horasTrabajadas);
+        this.fechaFinContrato = Calendar.getInstance();
+        this.fechaFinContrato.set(anioFin, mesFin, diaFin);
     }
     
-    // Métodos Clave
-    public void calculoPagoCondicionado() {
-    
-        if (fechaActual.before(fechaFinContrato) && fechaActual.equals(fechaFinContrato)) {
-        int salarioPorHora;
-        // salarioPorHora = (salarioBase / horasTrabajadas);
-        // salarioProporcional = salarioPorHora * horasTrabajadas;
-        }
+    // Métodos Claves
+    public double calculoPagoCondicionado() {
+        Calendar hoy = Calendar.getInstance();
+        
+        if (hoy.after(fechaFinContrato)) {
+            return 0.0;
+            }
+        return super.calcularSalarioProporcional();
     }
     
-    public void actualizarFechaFinContrato() {
-       
+    public void actualizarFechaFinContrato(Calendar nuevaFecha) {
+       this.fechaFinContrato = (Calendar) nuevaFecha.clone();
         
     }
     
+    // Mostrar info extendida
+    @Override
+    public String toString() {
+            return super.toString()+
+            "\nFecha de fin de contrato: "+fechaFinContrato.getTime();
+    }
+    
+    public Calendar getFechaFinContrato() {
+        return fechaFinContrato;
+    }
 }
