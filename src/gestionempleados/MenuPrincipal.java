@@ -56,9 +56,14 @@ public class MenuPrincipal extends JFrame{
             
                 });
         registrarHoras.addActionListener(e -> {
-            
+            SwingUtilities.invokeLater(()->{
+                RegistrarHorasTrabajadas ventana = new RegistrarHorasTrabajadas();
+                this.setVisible(false);
+               ventana.setVisible(true);
+            });
         });
         registrarVentas.addActionListener(e -> {
+            
         });
         actualizarContrato.addActionListener(e ->{ 
             

@@ -21,7 +21,7 @@ public class registrarEmpleado extends JFrame{
        
         JPanel nav = new JPanel();
         nav.setLayout(new BoxLayout(nav, BoxLayout.X_AXIS));
-        JButton Estandar = new JButton("Empleado Estadar");
+        JButton Estandar = new JButton("Empleado Estandar");
         JButton Temporal = new JButton("Empleado Temporal");
         JButton Ventas = new JButton("Empleado Ventas");
         
@@ -103,6 +103,7 @@ public class registrarEmpleado extends JFrame{
             repaint();
         });
         Registrar.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Empleado registrado con exito");
             SwingUtilities.invokeLater(()->{
                 MenuPrincipal ventana = new MenuPrincipal();
                 this.setVisible(false);
