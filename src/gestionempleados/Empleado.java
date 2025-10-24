@@ -5,6 +5,7 @@
 package gestionempleados;
 
 import java.util.Calendar;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 /**
  *
@@ -19,6 +20,7 @@ public class Empleado {
     protected double salarioBase;
     protected int horasTrabajadas;
     protected String rutaFoto;
+    protected transient ImageIcon foto;
     
     // Constructor 
     public Empleado(int codigo, String nombre, double salarioBase, int horasTrabajadas) {
@@ -51,6 +53,9 @@ public class Empleado {
         return horasTrabajadas;
     }
     
+    public String getRutaFoto() {
+        return rutaFoto;
+    }
     // Implementar setters
     public void setSalarioBase(double salarioBase) {
         this.salarioBase = salarioBase;
@@ -62,6 +67,7 @@ public class Empleado {
     
     public void setRutaFoto(String rutaFoto) {
         this.rutaFoto = rutaFoto;
+        this.foto = null;
     }
     
     // Métodos clave
@@ -81,11 +87,25 @@ public class Empleado {
         return salarioNeto;
     }
     
+    // Función de Imagen de identificación personal
+    public ImageIcon getFotoEscalada(int ancho, int alto) {
+        if (rutaFoto == null)
+            return null;
+        try {
+            Image img = new ImageIcon(rutaFoto).getImage();
+            Image esc = img.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+            return new ImageIcon(esc);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    @Override
     public String toString() {
-        return "Coidgo: "+codigo+
+        return "Codigo: "+codigo+
                 "\nNombre: "+nombre+
                 "\nFecha de contratación: "+fechaContrato.getTime()+
-                (rutaFoto != null ? ("\nFoto " + rutaFoto) : " ");
+                (rutaFoto != null ? ("\nFoto: " + rutaFoto) : " ");
     }
     
 }
