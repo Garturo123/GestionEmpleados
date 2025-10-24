@@ -48,7 +48,11 @@ public class MenuPrincipal extends JFrame{
         add(panel);
         
         registrarEmpleado.addActionListener(e ->{ 
-            
+            SwingUtilities.invokeLater(()->{
+                registrarEmpleado ventana = new registrarEmpleado();
+                this.setVisible(false);
+               ventana.setVisible(true);
+            });
             
         });
         
