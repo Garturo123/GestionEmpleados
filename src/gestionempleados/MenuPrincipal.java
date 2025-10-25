@@ -57,6 +57,9 @@ public class MenuPrincipal extends JFrame{
         });
         
         
+        });
+        
+        
         registrarHoras.addActionListener(e -> {
             SwingUtilities.invokeLater(()->{
                 RegistrarHorasTrabajadas ventana = new RegistrarHorasTrabajadas();
@@ -66,12 +69,21 @@ public class MenuPrincipal extends JFrame{
         });
         
         
+        
+        
         registrarVentas.addActionListener(e -> {
 
+       
         });
         
         
+        
+        
         actualizarContrato.addActionListener(e ->{ 
+               
+        });
+        
+        
                
         });
         
@@ -81,9 +93,13 @@ public class MenuPrincipal extends JFrame{
         });
         
         
+        
+        
         reporteGeneral.addActionListener(e -> {
         
+        
         });
+        
         
     }
 }
