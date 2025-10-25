@@ -67,11 +67,7 @@ public class MenuPrincipal extends JFrame{
         
         
         registrarVentas.addActionListener(e -> {
-<<<<<<< HEAD
-            
-=======
-       
->>>>>>> 7ddcc57ad0c63c310485bd70b83546848421efe6
+
         });
         
         
