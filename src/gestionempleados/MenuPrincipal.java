@@ -97,14 +97,22 @@ public class MenuPrincipal extends JFrame{
         
         
         calcularPago.addActionListener(e -> {
-            
+            SwingUtilities.invokeLater(()->{
+                calcularPago ventana = new calcularPago();
+                this.setVisible(false);
+               ventana.setVisible(true);
+            });    
         });
         
         
         
         
         reporteGeneral.addActionListener(e -> {
-        
+            SwingUtilities.invokeLater(()->{
+                reporteGeneral ventana = new reporteGeneral();
+                this.setVisible(false);
+               ventana.setVisible(true);
+            });  
         
         });
         

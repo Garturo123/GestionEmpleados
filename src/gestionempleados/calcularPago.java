@@ -1,13 +1,11 @@
 package gestionempleados;
 
-import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -16,24 +14,30 @@ import javax.swing.SwingUtilities;
  *
  * @author gaat1
  */
-public class actualizarContrato extends JFrame {
-    public actualizarContrato(){
-        setTitle("Actualizar Contrato");
-        setSize(450,120);
+public class calcularPago extends JFrame {
+    public calcularPago(){
+         setTitle("Calcular Pago");
+        setSize(450,170);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         JPanel centro = new JPanel();
-        centro.setLayout(new GridLayout(2,2,10,10));
+        centro.setLayout(new GridLayout(3,2,10,10));
         centro.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         JLabel LabelCodigo = new JLabel("Codigo: ");
         JTextField codigo = new JTextField();
-        JDateChooser selectorFecha = new JDateChooser();
-        selectorFecha.setDateFormatString("dd/MM/yyyy"); // formato de fecha
-
-        // Botón para obtener la fecha
-        JButton Registrar = new JButton("Registrar");
-        Registrar.addActionListener(e -> {
-            java.util.Date fecha = selectorFecha.getDate();
+        JLabel Salario = new JLabel("Salario: ");
+        JButton Calcular = new JButton("Calcular");
+        JButton Salir = new JButton("Salir");
+        
+        add(centro, BorderLayout.CENTER);
+        centro.add(LabelCodigo);
+        centro.add(codigo);
+        centro.add(Salario);
+        centro.add(Calcular);
+        centro.add(Salir);
+        
+        Salir.addActionListener(e -> {
+            
             SwingUtilities.invokeLater(()->{
                 MenuPrincipal Inicio = new MenuPrincipal();
                 this.setVisible(false);
@@ -41,10 +45,9 @@ public class actualizarContrato extends JFrame {
                
             });
         });
-        add(centro, BorderLayout.CENTER);
-        centro.add(LabelCodigo);
-        centro.add(codigo);
-        centro.add(selectorFecha);
-        centro.add(Registrar);
+         Calcular.addActionListener(e -> {
+            Salario.setText("Salario:    $" + 0);
+           
+        });
     }
 }
