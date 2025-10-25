@@ -54,7 +54,9 @@ public class MenuPrincipal extends JFrame{
                ventana.setVisible(true);
             });
             
-                });
+        });
+        
+        
         registrarHoras.addActionListener(e -> {
             SwingUtilities.invokeLater(()->{
                 RegistrarHorasTrabajadas ventana = new RegistrarHorasTrabajadas();
@@ -62,17 +64,30 @@ public class MenuPrincipal extends JFrame{
                ventana.setVisible(true);
             });
         });
+        
+        
         registrarVentas.addActionListener(e -> {
+<<<<<<< HEAD
             
+=======
+       
+>>>>>>> 7ddcc57ad0c63c310485bd70b83546848421efe6
         });
+        
+        
         actualizarContrato.addActionListener(e ->{ 
-            
-            
-                });
+               
+        });
+        
+        
         calcularPago.addActionListener(e -> {
             
         });
+        
+        
         reporteGeneral.addActionListener(e -> {
+        
         });
+        
     }
 }

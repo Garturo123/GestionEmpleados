@@ -1,5 +1,7 @@
 package gestionempleados;
 
+import java.util.Calendar;
+
 
 public class EmpleadoVentas extends Empleado {
     private double tasaComision=0.5;
@@ -44,6 +46,10 @@ public class EmpleadoVentas extends Empleado {
                 + "\n Ventas de mes actual: " +ventasMes[mes]+
                 "\n Comision del mes actual: "+calcularComision(mes)+
                 "\n Total de ventas anuales: "+calcularVentasAnuales(total);  
+    }
+
+    void actualizarEmpleado(Calendar newfecha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

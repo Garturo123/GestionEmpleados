@@ -47,4 +47,8 @@ public class EmpleadoTemporal extends Empleado {
     public Calendar getFechaFinContrato() {
         return fechaFinContrato;
     }
+
+    void getFechaFinContrato(Calendar newfecha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
