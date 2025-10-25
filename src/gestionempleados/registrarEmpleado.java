@@ -1,5 +1,6 @@
 package gestionempleados;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.io.File;
@@ -15,7 +16,7 @@ import javax.swing.*;
 public class registrarEmpleado extends JFrame{
     public registrarEmpleado(){
         setTitle("Registrar Empleados");
-        setSize(450, 400);
+        setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
        
@@ -26,7 +27,7 @@ public class registrarEmpleado extends JFrame{
         JButton Ventas = new JButton("Empleado Ventas");
         
         JPanel centro = new JPanel();
-        centro.setLayout(new GridLayout(10,2,10,10));
+        centro.setLayout(new GridLayout(5,2,10,10));
         centro.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         
         JLabel LabelCodigo = new JLabel("Codigo: ");
@@ -36,7 +37,8 @@ public class registrarEmpleado extends JFrame{
         JLabel LabelSalarioBase = new JLabel("Salario Base: ");
         JTextField salarioBase = new JTextField();
         JLabel LfechaFinContrato = new JLabel("Fecha fin contrato: ");
-        JTextField fechaFinContrato = new JTextField();
+         JDateChooser selectorFecha = new JDateChooser();
+        selectorFecha.setDateFormatString("dd/MM/yyyy"); // formato de fecha
         
         
         
@@ -45,6 +47,8 @@ public class registrarEmpleado extends JFrame{
         
         JPanel footer = new JPanel();
         footer.setLayout(new BoxLayout(footer, BoxLayout.X_AXIS));
+        footer.setLayout(new GridLayout(1,2,10,10));
+        footer.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         JButton Registrar = new JButton("Registrar");
         JButton Cancelar = new JButton("Cancelar");
         
@@ -61,6 +65,7 @@ public class registrarEmpleado extends JFrame{
         centro.add(LabelSalarioBase);
         centro.add(salarioBase);
         centro.add(SelecionarImagen);
+        centro.add(new JLabel(""));
         
         add(footer, BorderLayout.SOUTH);
         footer.add(Registrar);
@@ -85,20 +90,23 @@ public class registrarEmpleado extends JFrame{
             }
         });
         Temporal.addActionListener(e ->{
+           setTitle("Registrar Empleado Temporal");
            centro.add(LfechaFinContrato);
-           centro.add(fechaFinContrato);
+           centro.add(selectorFecha);
            revalidate();
             repaint();
        });
         Estandar.addActionListener(e ->{
+           setTitle("Registrar Empleado Estandar");
            centro.remove(LfechaFinContrato);
-           centro.remove(fechaFinContrato);
+           centro.remove(selectorFecha);
            revalidate();
             repaint();
         });
         Ventas.addActionListener(e ->{
+           setTitle("Registrar Empleado Ventas");
            centro.remove(LfechaFinContrato);
-           centro.remove(fechaFinContrato);
+           centro.remove(selectorFecha);
            revalidate();
             repaint();
         });

@@ -1,6 +1,8 @@
 package gestionempleados;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridLayout;
 import javax.swing.*;
 
 /**
@@ -9,25 +11,31 @@ import javax.swing.*;
  */
 public class RegistrarHorasTrabajadas extends JFrame {
     public RegistrarHorasTrabajadas(){
-        setTitle("Gestion de empleados");
-        setSize(150,150);
+        setTitle("Registrar Horas Trabajadas");
+        setSize(320,150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        JLabel LabelCodigo = new JLabel("Codigo: ");
+        
+        JPanel centro = new JPanel();
+        centro.setLayout(new GridLayout(3,2,10,10));
+        centro.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        JLabel LabelCodigo = new JLabel("Codigo de empleado: ");
         JTextField codigo = new JTextField();
-        JLabel LabelNombre = new JLabel("Nombre: ");
-        JTextField nombre = new JTextField();
+        JLabel LabelHoras = new JLabel("Horas Trabajadas: ");
+        JTextField Horas = new JTextField();
         JButton Registrar = new JButton("Registrar");
-        Registrar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(LabelCodigo);
-        add(codigo);
-        add(LabelNombre);
-        add(nombre);
-        add(Registrar);
+       
+        add(centro,  BorderLayout.CENTER);
+        centro.add(LabelCodigo);
+        centro.add(codigo);
+        centro.add(LabelHoras);
+        centro.add(Horas);
+        centro.add(Registrar);
         
         Registrar.addActionListener(e ->{
             SwingUtilities.invokeLater(()->{
                 MenuPrincipal Inicio = new MenuPrincipal();
+                this.setVisible(false);
                Inicio.setVisible(true);
             });
         });
