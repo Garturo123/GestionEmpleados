@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gestionempleados;
 
 import java.util.Calendar;
@@ -21,15 +17,15 @@ public class Empleado {
     protected double salarioBase;
     protected int horasTrabajadas;
     protected String rutaFoto;
-    protected transient ImageIcon foto;
+    protected ImageIcon foto;
 
     // Constructor 
-    public Empleado(int codigo, String nombre, double salarioBase, int horasTrabajadas) {
+    public Empleado(int codigo, String nombre, double salarioBase,ImageIcon foto) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.salarioBase = salarioBase;
-        this.horasTrabajadas = horasTrabajadas;
-
+        horasTrabajadas = 0;
+        this.foto = foto;
         this.fechaContrato = Calendar.getInstance();
     }
 

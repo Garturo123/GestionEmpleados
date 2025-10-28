@@ -14,8 +14,8 @@ import javax.swing.SwingUtilities;
  *
  * @author gaat1
  */
-public class calcularPago extends JFrame {
-    public calcularPago(){
+public class CalcularPago extends JFrame {
+    public CalcularPago(){
          setTitle("Calcular Pago");
         setSize(450,170);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,9 +23,12 @@ public class calcularPago extends JFrame {
         JPanel centro = new JPanel();
         centro.setLayout(new GridLayout(3,2,10,10));
         centro.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        
         JLabel LabelCodigo = new JLabel("Codigo: ");
         JTextField codigo = new JTextField();
+        
         JLabel Salario = new JLabel("Salario: ");
+        
         JButton Calcular = new JButton("Calcular");
         JButton Salir = new JButton("Salir");
         
@@ -46,8 +49,9 @@ public class calcularPago extends JFrame {
             });
         });
          Calcular.addActionListener(e -> {
-            Salario.setText("Salario:    $" + 0);
-           
+             Salario.setText("Salario:    $" + Empresa.pagoMensual(Integer.parseInt(codigo.getText())));
+             revalidate();
+             repaint();
         });
     }
 }

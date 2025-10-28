@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gestionempleados;
 
 import java.util.ArrayList;
@@ -11,13 +7,9 @@ import javax.swing.JOptionPane;
 
 public class Empresa {
 
-    private List<Empleado> Empleado;
+    private static List<Empleado> Empleado = new ArrayList<>();;
 
-    public Empresa() {
-        this.Empleado = new ArrayList<>();
-    }
-
-    public boolean registrarEmpleados(Empleado newEmpleado) {
+    public static boolean registrarEmpleados(Empleado newEmpleado) {
         for (Empleado emp : Empleado) {
             if (emp.getCodigo() == newEmpleado.getCodigo()) {
                 JOptionPane.showMessageDialog(null, "Error El usuario " + newEmpleado.getCodigo() + " ya existe No se agrego", "Error", JOptionPane.ERROR_MESSAGE);
@@ -27,7 +19,7 @@ public class Empresa {
         return Empleado.add(newEmpleado);
     }
 
-    public Empleado buscarEmpleados(int codigo) {
+    public static Empleado buscarEmpleados(int codigo) {
         for (Empleado emp : Empleado) {
             if (emp.getCodigo() == codigo) {
                 return emp;
@@ -36,7 +28,7 @@ public class Empresa {
         return null;
     }
 
-    public boolean registrarhoras(int codigo, int horas) {
+    public static boolean registrarhoras(int codigo, int horas) {
         Empleado emp = buscarEmpleados(codigo);
         if (emp != null) {
             emp.registroHorasTrabajadas(horas);
@@ -46,7 +38,7 @@ public class Empresa {
         return false;
     }
 
-    public boolean registarVentas(int codigo, int mes, double monto) {
+    public static boolean registarVentas(int codigo, int mes, double monto) {
         Empleado emp = buscarEmpleados(codigo);
 
         if (emp != null) {
@@ -78,7 +70,7 @@ public class Empresa {
         return false;
     }
 
-    public double pagoMensual(int codigo) {
+    public static double pagoMensual(int codigo) {
         Empleado emp = buscarEmpleados(codigo);
         if (emp != null) {
             return emp.calcularSalarioProporcional();
@@ -87,7 +79,7 @@ public class Empresa {
         return 0.0;
     }
 
-    public void reporteEmpleados() {
+    public static void reporteEmpleados() {
         StringBuilder reporte = new StringBuilder("--- REPORTE DE EMPLEADOS ---\n\n");
         int mesActual = 9;
         double total = 0.0;
@@ -95,7 +87,7 @@ public class Empresa {
         if (Empleado.isEmpty()) {
             reporte.append("No hay empleados registrados en la empresa.");
         } else {
-            for (Empleado emp : this.Empleado) {
+            for (Empleado emp : Empleado) {
                 reporte.append("---------------------------------\n");
 
                 if (emp instanceof EmpleadoVentas) {

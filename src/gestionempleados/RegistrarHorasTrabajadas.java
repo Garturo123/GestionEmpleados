@@ -24,15 +24,27 @@ public class RegistrarHorasTrabajadas extends JFrame {
         JLabel LabelHoras = new JLabel("Horas Trabajadas: ");
         JTextField Horas = new JTextField();
         JButton Registrar = new JButton("Registrar");
-       
+        JButton Cancelar = new JButton("Cancelar");
+        
         add(centro,  BorderLayout.CENTER);
         centro.add(LabelCodigo);
         centro.add(codigo);
         centro.add(LabelHoras);
         centro.add(Horas);
         centro.add(Registrar);
+        centro.add(Cancelar);
         
         Registrar.addActionListener(e ->{
+           Empresa.registrarhoras(Integer.parseInt(codigo.getText()), Integer.parseInt(Horas.getText()));
+                SwingUtilities.invokeLater(()->{
+                    MenuPrincipal Inicio = new MenuPrincipal();
+                    this.setVisible(false);
+                   Inicio.setVisible(true);
+                });
+            
+            
+        });
+        Cancelar.addActionListener(e ->{
             SwingUtilities.invokeLater(()->{
                 MenuPrincipal Inicio = new MenuPrincipal();
                 this.setVisible(false);
