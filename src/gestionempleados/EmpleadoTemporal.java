@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gestionempleados;
 
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 /**
  *
  * @author najma
@@ -15,11 +12,9 @@ public class EmpleadoTemporal extends Empleado {
     protected Calendar fechaFinContrato;
     
     // Constructor
-    public EmpleadoTemporal(int codigo, String nombre, double salarioBase, int horasTrabajadas, 
-            int anioFin, int mesFin, int diaFin) {
-        super(codigo, nombre, salarioBase, horasTrabajadas);
-        this.fechaFinContrato = Calendar.getInstance();
-        this.fechaFinContrato.set(anioFin, mesFin, diaFin);
+    public EmpleadoTemporal(int codigo, String nombre, double salarioBase,ImageIcon foto, Calendar fechaFinContrato) {
+        super(codigo, nombre, salarioBase, foto);
+        this.fechaFinContrato = fechaFinContrato;
     }
     
     // Métodos Claves

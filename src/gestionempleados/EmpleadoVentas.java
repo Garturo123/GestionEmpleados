@@ -1,17 +1,20 @@
 package gestionempleados;
 
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 
 
 public class EmpleadoVentas extends Empleado {
-    private double tasaComision=0.5;
+    private double tasaComision;
+    private int mesContrato;
     private double[] ventasMes; //registro de ventas realizadas cada mes
     
     //constructor
-    public EmpleadoVentas(int codigo, String nombre, double salarioBase, int horasTrabajadas, double tasaComision, int mesActual,double[] ventasMes){
-     super (codigo,nombre,salarioBase,horasTrabajadas);
+    public EmpleadoVentas(int codigo, String nombre, double salarioBase,ImageIcon foto, double tasaComision){
+     super (codigo,nombre,salarioBase,foto);
      this.tasaComision=tasaComision;
-     this.ventasMes = new double[12];
+     ventasMes = new double[12];
+     mesContrato = Calendar.getInstance().get(Calendar.MONTH);
     }
     
     public void registroVentas(int mes,double monto){

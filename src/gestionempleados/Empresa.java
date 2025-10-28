@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gestionempleados;
 
 import java.util.ArrayList;
@@ -11,11 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Empresa {
 
-    private List<Empleado> Empleado;
-
-    public Empresa() {
-        this.Empleado = new ArrayList<>();
-    }
+    private static List<Empleado> Empleado = new ArrayList<>();;
 
     public boolean registrarEmpleados(Empleado newEmpleado) {
         for (Empleado emp : Empleado) {
@@ -27,7 +19,7 @@ public class Empresa {
         return Empleado.add(newEmpleado);
     }
 
-    public Empleado buscarEmpleados(int codigo) {
+    public static Empleado buscarEmpleados(int codigo) {
         for (Empleado emp : Empleado) {
             if (emp.getCodigo() == codigo) {
                 return emp;

@@ -49,7 +49,7 @@ public class MenuPrincipal extends JFrame{
         
         registrarEmpleado.addActionListener(e ->{ 
             SwingUtilities.invokeLater(()->{
-                registrarEmpleado ventana = new registrarEmpleado();
+                RegistrarEmpleado ventana = new RegistrarEmpleado();
                 this.setVisible(false);
                ventana.setVisible(true);
             });
@@ -73,7 +73,7 @@ public class MenuPrincipal extends JFrame{
         
         registrarVentas.addActionListener(e -> {
             SwingUtilities.invokeLater(()->{
-                registrarVentas ventana = new registrarVentas();
+                RegistrarVentas ventana = new RegistrarVentas();
                 this.setVisible(false);
                ventana.setVisible(true);
             });
@@ -85,7 +85,7 @@ public class MenuPrincipal extends JFrame{
         
         actualizarContrato.addActionListener(e ->{ 
            SwingUtilities.invokeLater(()->{
-                actualizarContrato ventana = new actualizarContrato();
+                ActualizarContrato ventana = new ActualizarContrato();
                 this.setVisible(false);
                ventana.setVisible(true);
             });    
@@ -98,7 +98,7 @@ public class MenuPrincipal extends JFrame{
         
         calcularPago.addActionListener(e -> {
             SwingUtilities.invokeLater(()->{
-                calcularPago ventana = new calcularPago();
+                CalcularPago ventana = new CalcularPago();
                 this.setVisible(false);
                ventana.setVisible(true);
             });    
@@ -109,7 +109,7 @@ public class MenuPrincipal extends JFrame{
         
         reporteGeneral.addActionListener(e -> {
             SwingUtilities.invokeLater(()->{
-                reporteGeneral ventana = new reporteGeneral();
+                ReporteGeneral ventana = new ReporteGeneral();
                 this.setVisible(false);
                ventana.setVisible(true);
             });  
