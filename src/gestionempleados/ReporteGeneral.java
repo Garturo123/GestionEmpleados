@@ -1,9 +1,20 @@
-<<<<<<< HEAD:src/gestionempleados/reporteGeneral.java
+
 package gestionempleados;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,56 +23,59 @@ import javax.swing.JTable;
 public class ReporteGeneral extends JFrame {
     public ReporteGeneral(){
         setTitle("Calcular Pago");
-        setSize(450,170);
+        setSize(1000,370);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        String[] columnas = {"Codigo", "Nombre", "Tipo","Horas Trabajadas","Salario Base","Ventas anuales","Comision","Fecha fin contrato"};
+         JPanel centro = new JPanel();
+        centro.setLayout(new BoxLayout(centro, BoxLayout.Y_AXIS));
+        
+        add(centro,  BorderLayout.CENTER);
 
-        // Datos de la tabla (matriz de objetos)
-        Object[][] datos = {
-           
-        };
-        Empresa.reporteEmpleados();
-        // Crear la tabla
-        JTable tabla = new JTable(datos, columnas);
+        JTable tablaEmpleados = new JTable();
+        JScrollPane scroll = new JScrollPane(tablaEmpleados);
+        JButton Salir = new JButton("Salir");
+        JLabel titulo = new JLabel("Tipos de empleados:");
+        JLabel Estandar = new JLabel("Estandar: "+ Empresa.contarPorTipo("Estandar"));
+        JLabel Temporal = new JLabel("Temporal: "+ Empresa.contarPorTipo("Temporal"));
+        JLabel Ventas = new JLabel("Ventas: "+ Empresa.contarPorTipo("Ventas"));
+        
+        scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Estandar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Temporal.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Ventas.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Salir.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        centro.add(scroll);
+        centro.add(titulo);
+        centro.add(Estandar);
+        centro.add(Temporal);
+        centro.add(Ventas);
+        centro.add(Salir);
+        
+        Salir.addActionListener(e -> {
+            SwingUtilities.invokeLater(()->{
+                MenuPrincipal ventana = new MenuPrincipal();
+                this.setVisible(false);
+               ventana.setVisible(true);
+            });
+            
+        });
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[] {"Codigo", "Nombre", "Tipo","Horas Trabajadas","Salario Base","Fecha de contrato","Fecha fin contrato","Comision","Ventas anuales"});
+        tablaEmpleados.setModel(modelo);
 
-        // Colocar la tabla dentro de un JScrollPane (para que tenga scroll)
-        JScrollPane scroll = new JScrollPane(tabla);
+
+        modelo.setRowCount(0); 
+
+        List<String[]> datos = Empresa.generarReporteGeneral();
+
+        for (String[] fila : datos) {
+            modelo.addRow(fila);
+        }
+
         
     }
 }
-=======
-package gestionempleados;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-/**
- *
- * @author gaat1
- */
-public class ReporteGeneral extends JFrame {
-    public ReporteGeneral(){
-        setTitle("Calcular Pago");
-        setSize(450,170);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        
-        String[] columnas = {"Codigo", "Nombre", "Tipo","Horas Trabajadas","Salario Base","Ventas anuales/ Comision","Fecha fin contrato"};
-
-        // Datos de la tabla (matriz de objetos)
-        Object[][] datos = {
-           
-        };
-
-        // Crear la tabla
-        JTable tabla = new JTable(datos, columnas);
-
-        // Colocar la tabla dentro de un JScrollPane (para que tenga scroll)
-        JScrollPane scroll = new JScrollPane(tabla);
-
-    }
-}
->>>>>>> a08b30cebe300531a7101217f72a1d942754e977:src/gestionempleados/ReporteGeneral.java

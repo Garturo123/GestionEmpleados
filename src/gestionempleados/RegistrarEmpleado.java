@@ -203,17 +203,19 @@ public class RegistrarEmpleado extends JFrame{
             
             if(TipoEmpleado == 1){
                 Empleado newEmpleado = new Empleado(cod,nombre.getText(),sal,imagen);
+                Empresa.registrarEmpleados(newEmpleado);
             }
             
             if(TipoEmpleado == 3){
-                 Double comi = Double.parseDouble(Comision.getText());
-                EmpleadoVentas newVentasEmp = new EmpleadoVentas(cod, nombre.getText(), sal, imagen, comi);
+                EmpleadoVentas newVentasEmp = new EmpleadoVentas(cod, nombre.getText(), sal, imagen, Double.parseDouble(Comision.getText()));
+                Empresa.registrarEmpleados(newVentasEmp);
             }
            if(TipoEmpleado == 2 ){  
                 Date fecha = selectorFecha.getDate();
                 Calendar fechaContrato = Calendar.getInstance();
                 fechaContrato.setTime(fecha);
                 EmpleadoTemporal newEmpleadoTemp = new EmpleadoTemporal(cod,nombre.getText(),sal,imagen,fechaContrato);
+                Empresa.registrarEmpleados(newEmpleadoTemp);
             }
             
 
